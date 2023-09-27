@@ -53,10 +53,21 @@ public class CityCSVProcessor {
 	
 	private void processData() {
 		for (CityRecord city : cities) {
+			String key = city.getName();
 			//TODO: check if key is already set and if get the list and append and reset the value with the update list
-			
-			citiesByName.put(city.getName(), );
+			if (citiesByName.containsKey(key)) {
+				List<CityRecord> existingList = citiesByName.get(key);
+				
+				existingList.add(city);
+				citiesByName.put(key, existingList);
+				
+			} else {
+				List<CityRecord> newList = new ArrayList<CityRecord>();
+				newList.add(city);
+				citiesByName.put(key, newList);
+			}
 		}
+		System.out.println(citiesByName);
 	}
 	
 	private String cleanRawValue(String rawValue) {
