@@ -14,8 +14,6 @@ public class Author {
 		return name;
 	}
 	
-	public void display() {
-		System.out.println(name);
-	}
+
 
 }

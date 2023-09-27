@@ -14,13 +14,7 @@ public class Article {
 		
 	}
 	
-	public void display() {
-		for (Author author : authors) {
-			System.out.println("article");
-			author.display();
-			
-		}
-	}
+
 	
 	public String toString() {
 		return title;
