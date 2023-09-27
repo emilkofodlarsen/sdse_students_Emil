@@ -3,9 +3,18 @@ package edu.sdse.csvprocessor;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class CityCSVProcessor {
+	
+	List<CityRecord> cities = new ArrayList<CityRecord>();
+	
+	Map<String, List<CityRecord>> citiesByName = new HashMap<String, List<CityRecord>>();
+	
 	
 	public void readAndProcess(File file) {
 		//Try with resource statement (as of Java 8)
@@ -26,12 +35,27 @@ public class CityCSVProcessor {
 				CityRecord cityObject = new CityRecord(id,year,city,population);
 				
 				//System.out.println("id: " + id + ", year: " + year + ", city: " + city + ", population: " + population);
-				System.out.println(cityObject);
-				//TODO: Extend the program to process entries!
+				//System.out.println(cityObject);
+				cities.add(cityObject);
 			}
+			//TODO:analyze data here
+			System.out.println(cities);
+			processData();
+			
+			
+			
+			
 		} catch (Exception e) {
 			System.err.println("An error occurred:");
 			e.printStackTrace();
+		}
+	}
+	
+	private void processData() {
+		for (CityRecord city : cities) {
+			//TODO: check if key is already set and if get the list and append and reset the value with the update list
+			
+			citiesByName.put(city.getName(), );
 		}
 	}
 	

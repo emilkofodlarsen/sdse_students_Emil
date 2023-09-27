@@ -8,7 +8,7 @@ public class CityRecord {
 	
 	public String toString() {
 		
-		return "id: " + id + ", year: " + year + ", city: " + cityName + ", population: " + population;
+		return "id: " + id + " year: " + year + " city: " + cityName + " population: " + population;
 	}
 	
 	public CityRecord(int id, int year, String cityName, int population) {
@@ -17,5 +17,9 @@ public class CityRecord {
 		this.cityName = cityName;
 		this.population = population;
 	}
+	public String getName() {
+		return cityName;
+	}
+
 
 }
