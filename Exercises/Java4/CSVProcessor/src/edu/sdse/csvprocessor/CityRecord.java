@@ -20,6 +20,13 @@ public class CityRecord {
 	public String getName() {
 		return cityName;
 	}
+	
+	public int getYear() {
+		return year;
+	}
+	public int getPopulation() {
+		return population;
+	}
 
 
 }

@@ -3,10 +3,12 @@ package edu.sdse.csvprocessor;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 
 public class CityCSVProcessor {
@@ -39,7 +41,7 @@ public class CityCSVProcessor {
 				cities.add(cityObject);
 			}
 			//TODO:analyze data here
-			System.out.println(cities);
+			//System.out.println(cities);
 			processData();
 			
 			
@@ -52,6 +54,54 @@ public class CityCSVProcessor {
 	}
 	
 	private void processData() {
+		
+		aggregateData();
+		
+		//System.out.println(citiesByName);
+		
+		for (Entry<String, List<CityRecord>> entry : citiesByName.entrySet()) {
+			//TODO A total number of entries for the city
+			//TODO B the first year in the dataset
+			//TODO C the last year in the dataset
+			//TODO D average population of city in dataset
+			
+			int entries = 0;
+			int firstYear = 0;
+			int lastYear = 0;
+			int totalPopulationEntries = 0;
+			
+			
+			
+			
+			for (CityRecord record : entry.getValue()) {
+				
+				int year = record.getYear();
+				int population = record.getPopulation();
+				
+				if ((lastYear == 0) || (year > lastYear)) {
+					lastYear = year;
+				}
+				if ((firstYear == 0) || (year < firstYear)) {
+					firstYear = year;
+				}
+				
+				
+				totalPopulationEntries = totalPopulationEntries + population;
+				entries = entries + 1;
+			}
+			
+			int averagePopulation = totalPopulationEntries/entries; 
+			String cityName = entry.getKey();
+			
+			//output analysis
+			System.out.println("Average population of " + cityName + " (" + firstYear + "-" +lastYear + "; " + entries + " entries): " + averagePopulation);
+			
+			
+			
+		}
+	}
+	
+	private void aggregateData() {
 		for (CityRecord city : cities) {
 			String key = city.getName();
 			//TODO: check if key is already set and if get the list and append and reset the value with the update list
@@ -67,7 +117,6 @@ public class CityCSVProcessor {
 				citiesByName.put(key, newList);
 			}
 		}
-		System.out.println(citiesByName);
 	}
 	
 	private String cleanRawValue(String rawValue) {
