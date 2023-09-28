@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Code/Phase 1/src"/>
+	<classpathentry kind="lib" path="Code/Phase 1/lib/commons-csv-1.7/commons-csv-1.7.jar"/>
+	<classpathentry kind="lib" path="Code/Phase 1/lib/commons-csv-1.7/commons-csv-1.7-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

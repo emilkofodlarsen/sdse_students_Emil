@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Exercises/Java4/CSVProcessor/src"/>
+	<classpathentry kind="src" path="Project 1/Phase 1/Code/Phase 1/src"/>
+	<classpathentry kind="src" path="Project 1/Phase 2/Code/Phase 2/src"/>
+	<classpathentry kind="src" path="Project 2/portunus/controller/src/main/java"/>
+	<classpathentry kind="src" path="Project 2/portunus/core/src/main/java"/>
+	<classpathentry kind="src" path="Project 2/portunus/launcher/src/main/java"/>
+	<classpathentry kind="src" path="Project 2/portunus/passwordgenerator/src/main/java"/>
+	<classpathentry kind="src" path="Project 2/portunus/util.finder/src/main/java"/>
+	<classpathentry kind="src" path="Project 2/portunus/util.io/src/main/java"/>
+	<classpathentry kind="src" path="Project 2/portunus/util.passwordgenerator/src/main/java"/>
+	<classpathentry kind="src" path="Project 2/portunus/view/src/main/java"/>
+	<classpathentry kind="lib" path="Project 1/Phase 1/Code/Phase 1/lib/commons-csv-1.7/commons-csv-1.7.jar"/>
+	<classpathentry kind="lib" path="Project 1/Phase 1/Code/Phase 1/lib/commons-csv-1.7/commons-csv-1.7-sources.jar"/>
+	<classpathentry kind="lib" path="Project 1/Phase 2/Code/Phase 2/lib/commons-csv-1.7/commons-csv-1.7.jar"/>
+	<classpathentry kind="lib" path="Project 1/Phase 2/Code/Phase 2/lib/commons-csv-1.7/commons-csv-1.7-sources.jar"/>
+	<classpathentry kind="lib" path="Project 1/Phase 2/Code/Phase 2/lib/org.nypl.journalsystem.core_1.0.0.jar"/>
+	<classpathentry kind="lib" path="Project 1/Phase 2/Code/Phase 2/lib/org.nypl.journalsystem.hindex_0.8.1.jar"/>
+	<classpathentry kind="lib" path="Project 2/portunus/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="output" path="Exercises/Java4/CSVProcessor/bin"/>
+</classpath>
