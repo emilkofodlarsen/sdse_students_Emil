@@ -1,9 +1,14 @@
 package org.nypl.journalsystem;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class Journal {
+import org.nypl.journalsystem.core.IArticle;
+import org.nypl.journalsystem.core.IJournal;
+import org.nypl.journalsystem.core.IPublisher;
+
+public class Journal implements IJournal{
 	private String name;
 	private Publisher publisher;
 	private String issn;
@@ -23,11 +28,11 @@ public class Journal {
 		}
 	}
 	
-	public boolean fullIssue() {
+	public boolean isFullIssue() {
 		return fullIssue;
 	}
 	
-	public String toString() {
+	public String getName() {
 		return name;
 	}
 	public void display() {
@@ -36,14 +41,31 @@ public class Journal {
 		if (fullIssue) {
 			fullIssueText = " *FULL ISSUE*";
 		} 
-		System.out.println("Journal: \"" + name + "\" Published by: " + publisher + " ISSN:" +issn + fullIssueText);
+		System.out.println("Journal: \"" + name + "\" Published by: " + publisher.getName() + " ISSN:" +issn + fullIssueText);
 		for (Article article : articles) {
-			System.out.println("	"+article + " by:");
+			System.out.println("	"+article.getTitle() + " by:");
 			for (Author author : article.getAuthors()) {
-				System.out.println("		"+author);
+				System.out.println("		"+author.getName());
 			}
 		}
 	}
+
+	
+	public Collection<Article> getArticles() {
+		return articles;
+	}
+
+	
+	public String getIssn() {
+		return issn;
+	}
+
+	
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	
 	
 	
 

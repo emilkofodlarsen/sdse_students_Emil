@@ -1,6 +1,8 @@
 package org.nypl.journalsystem;
 
-public class Publisher {
+import org.nypl.journalsystem.core.IPublisher;
+
+public class Publisher implements IPublisher{
 	private String name;
 	private String location;
 	
@@ -10,8 +12,15 @@ public class Publisher {
 		
 	}
 	
-	public String toString() {
+	public String getName() {
 		return name;
 	}
+
+	
+	public String getLocation() {
+		return location;
+	}
+
+
 
 }

@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +15,10 @@ import java.util.Map.Entry;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-
-
+import org.nypl.journalsystem.core.IArticle;
+import org.nypl.journalsystem.core.IAuthor;
+import org.nypl.journalsystem.core.IJournal;
+import org.nypl.journalsystem.core.ILibrarySystem;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -23,27 +26,13 @@ import java.io.Reader;
 
 
 
-public class LibrarySystem {
-	List<Article> articles = new ArrayList<Article>();
-	
-	//List<Journal> journals = new ArrayList<Journal>();
-	Map<String, Journal> journalsByISSN = new HashMap<String, Journal>();
-	
-	//List<Publisher> publishers = new ArrayList<Publisher>();
-	Map<String, Publisher> publishersByName = new HashMap<String, Publisher>();
-	
-	//List<Author> authors = new ArrayList<Author>();
-	Map<Integer, Author> authorsByID = new HashMap<Integer, Author>();
+public class LibrarySystem implements ILibrarySystem{
+	private List<Article> articles = new ArrayList<Article>();
+	private Map<String, Journal> journalsByISSN = new HashMap<String, Journal>();
+	private Map<String, Publisher> publishersByName = new HashMap<String, Publisher>();
+	private Map<Integer, Author> authorsByID = new HashMap<Integer, Author>();
 	
 	public LibrarySystem() {
-		//DONE: Initialize system with default journals.
-		/*
-		Name: "Higher Education", publisher: Springer, location: Germany, ISSN: 0018-1560
-		Name: "System", publisher: Elsevier, location: Netherlands, ISSN: 0346-2511
-		Name: "Chem", publisher: Elsevier, location: Netherlands, ISSN: 2451-9294
-		Name: "Nature", publisher: Nature Research, location: Great Britain, ISSN: 1476-4687
-		Name: "Society", publisher: Springer, location: Germany, ISSN: 0147-2011
-		*/
 		String csvFilePath = "data/Journals.csv";
 
         try {
@@ -97,12 +86,7 @@ public class LibrarySystem {
 		loadArticles();
 	}
 	
-	protected void loadAuthors() throws FileNotFoundException, IOException {
-		
-		//ID, Name
-
-		//DONE: Load authors from file
-		
+	protected void loadAuthors() throws FileNotFoundException, IOException {		
 		String csvFilePath = "data/Authors.csv";
 
         try {
@@ -131,7 +115,6 @@ public class LibrarySystem {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //System.out.println(authorsByID);
         
 	}
 	
@@ -207,8 +190,7 @@ public class LibrarySystem {
 	
 	
 	public void listContents() {
-		//TODO: Print all journals with their respective articles and authors to the console.
-		
+
 		for (Journal journal : journalsByISSN.values()) {
             journal.display();
         }
@@ -220,5 +202,66 @@ public class LibrarySystem {
 		
 		librarySystem.load();
 		librarySystem.listContents();
+	}
+
+	
+	public Collection<Author> getAllAuthors() {
+		Collection<Author> allAuthors = new ArrayList<Author>();
+		
+		for (Article article : articles) {
+			List<Author> authors = article.getAuthors();
+			
+			for (Author author: authors) {
+				if (!allAuthors.contains(author)) {
+					allAuthors.add(author);
+				}
+			}
+			
+		}
+		return allAuthors;
+	}
+
+	
+	public Collection<Journal> getAllJournals() {
+		Collection<Journal> allJournals = new ArrayList<Journal>();
+		
+		allJournals = journalsByISSN.values();
+		return allJournals;
+	}
+
+	
+	public Collection<Article> getArticlesByAuthor(Author author) {
+		
+		Collection<Article> articlesByAuthor = new ArrayList<Article>();
+		
+		for (Article article : articles) {
+			if (article.getAuthors().contains(author)) {
+				articlesByAuthor.add(article);
+			}
+		}
+		
+		return articlesByAuthor;
+	}
+
+	
+	public Collection<Article> getArticlesCitedByArticle(Article article) {
+		// TODO Auto-generated method stub
+		//return articles which are cited by this article
+		Collection<Article> articlesByCitation = new ArrayList<Article>();
+		
+		
+		
+		return articlesByCitation;
+	}
+
+	
+	public Collection<Article> getArticlesCitingArticle(Article article) {
+		// TODO Auto-generated method stub
+		//return articles which are citing this article
+		Collection<Article> articlesByCitation = new ArrayList<Article>();
+		
+		
+		
+		return articlesByCitation;
 	}
 }

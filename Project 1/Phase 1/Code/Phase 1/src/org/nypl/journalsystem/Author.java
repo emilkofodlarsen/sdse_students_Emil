@@ -1,6 +1,9 @@
 package org.nypl.journalsystem;
 
-public class Author {
+
+import org.nypl.journalsystem.core.IAuthor;
+
+public class Author implements IAuthor{
 	
 	private int id;
 	private String name;
@@ -10,7 +13,7 @@ public class Author {
 		this.name = name;
 	}
 	
-	public String toString() {
+	public String getName() {
 		return name;
 	}
 	
